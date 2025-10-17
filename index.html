@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Facebook</title>
+  </head>
+  <body>
+    <header>
+      <h1>facebook</h1>
+      <div>
+        <form action="">
+          <div class="loginInput">
+            <label for="username">Email or Phone</label>
+            <input type="text" id="loginUsername" name="username" required />
+            <div>
+              <input type="checkbox" id="keepSignIn" name="keepSignIn" />
+              <label for="keepSignIn">Keep me signed in</label>
+            </div>
+          </div>
+          <div class="loginInput">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="loginPassword"
+              name="password"
+              required
+            />
+            <a href="#">Forgot Password?</a>
+          </div>
+          <button type="submit">Log In</button>
+        </form>
+      </div>
+    </header>
+    <main>
+      <div id="left">
+        <h2>
+          Facebook Helps you connect and share <br />with the people in your
+          life.
+        </h2>
+
+        <img src="cap1.png" alt="People Connection" />
+      </div>
+      <div id="right">
+        <h1>Sign Up</h1>
+        <h2>It's free and always will be.</h2>
+
+        <form action="" id="signupForm">
+          <div id="name">
+            <div style="display: flex; flex-direction: column; gap: 5px">
+              <input type="text" placeholder="First Name" id="firstName" />
+              <span class="error" id="firstNameError">a</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 5px">
+              <input type="text" placeholder="Last Name" id="lastName" />
+              <span class="error" id="lastNameError">a</span>
+            </div>
+          </div>
+          <input
+            type="email"
+            name="newEmail"
+            id="newEmail"
+            placeholder="Your Email"
+            id="newEmail"
+          />
+          <span class="error" id="emailError">a</span>
+
+          <input
+            type="email"
+            name="reEmail"
+            id="reEmail"
+            placeholder="Re-enter Email"
+            id="reEmail"
+          />
+          <span class="error" id="reEmailError">a</span>
+
+          <input
+            type="password"
+            name="newPassword"
+            id="newPassword"
+            placeholder="Password"
+            id="newPassword"
+          />
+          <span class="error" id="passwordError">a</span>
+          <span class="strength" id="passwordStrength">a</span>
+
+          <input
+            type="password"
+            name="rePassword"
+            id="rePassword"
+            placeholder="Re-enter Password"
+            id="rePassword"
+          />
+          <span class="error" id="rePasswordError">a</span>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
