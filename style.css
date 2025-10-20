@@ -162,18 +162,16 @@ main #right {
 
 #right #name {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  gap: 10px;
 }
-
-#right #name input {
-  width: 96%;
+#right #name > div {
+  flex: 1;
 }
 
 #right button {
   width: 200px;
   height: 50px;
-  background: linear-gradient(to top, rgba(99, 160, 81), rgba(92, 142, 71));
+  background: linear-gradient(to top, rgba(99, 160, 81), rgb(175, 187, 169));
   border-radius: 10px;
   border: black 2px solid;
   color: #f8fcf4;

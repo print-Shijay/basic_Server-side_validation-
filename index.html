@@ -10,10 +10,11 @@
     <header>
       <h1>facebook</h1>
       <div>
-        <form action="">
+        <form action="" id="loginForm">
           <div class="loginInput">
             <label for="username">Email or Phone</label>
             <input type="text" id="loginUsername" name="username" required />
+            <span class="error" id="loginUsernameError">a</span>
             <div>
               <input type="checkbox" id="keepSignIn" name="keepSignIn" />
               <label for="keepSignIn">Keep me signed in</label>
@@ -27,12 +28,14 @@
               name="password"
               required
             />
+            <span class="error" id="loginPasswordError">a</span>
             <a href="#">Forgot Password?</a>
           </div>
           <button type="submit">Log In</button>
         </form>
       </div>
     </header>
+
     <main>
       <div id="left">
         <h2>
@@ -46,15 +49,25 @@
         <h1>Sign Up</h1>
         <h2>It's free and always will be.</h2>
 
-        <form action="" id="signupForm">
+        <form action="POST" id="signupForm">
           <div id="name">
             <div style="display: flex; flex-direction: column; gap: 5px">
-              <input type="text" placeholder="First Name" id="firstName" />
+              <input
+                type="text"
+                name="firstName"
+                id="firstName"
+                placeholder="First Name"
+              />
               <span class="error" id="firstNameError">a</span>
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 5px">
-              <input type="text" placeholder="Last Name" id="lastName" />
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                placeholder="Last Name"
+              />
               <span class="error" id="lastNameError">a</span>
             </div>
           </div>
@@ -72,7 +85,6 @@
             name="reEmail"
             id="reEmail"
             placeholder="Re-enter Email"
-            id="reEmail"
           />
           <span class="error" id="reEmailError">a</span>
 
@@ -81,7 +93,6 @@
             name="newPassword"
             id="newPassword"
             placeholder="Password"
-            id="newPassword"
           />
           <span class="error" id="passwordError">a</span>
           <span class="strength" id="passwordStrength">a</span>
@@ -91,7 +102,6 @@
             name="rePassword"
             id="rePassword"
             placeholder="Re-enter Password"
-            id="rePassword"
           />
           <span class="error" id="rePasswordError">a</span>
           <button type="submit">Sign Up</button>
