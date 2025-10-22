@@ -1,14 +1,53 @@
 <?php
-    header("Content-Type: application/json");
+include("db.php");
+header("Content-Type: application/json");
 
-    $input = json_decode(file_get_contents("php://input"), true);
+// Get JSON input
+$input = json_decode(file_get_contents("php://input"), true);
 
-    $firstname = trim($input['firstName'] ?? '');
-    $lastname = trim($input['lastName'] ?? '');
-    $email = trim($input['email'] ?? '');
-    $password = trim($input['password']?? '');
 
-    $errors = [];
+$firstName = htmlspecialchars(trim($input['firstName'] ?? ''), ENT_QUOTES, 'UTF-8');
+$lastName = htmlspecialchars(trim($input['lastName'] ?? ''), ENT_QUOTES, 'UTF-8');
+$email = filter_var(trim($input['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+$password = trim($input['password'] ?? '');
+
+$errors = [];
+
+
+
+if (empty($errors)) {
+
+    // Hash the password securely
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // Check if email already exists
+    $check = $conn->prepare("SELECT Email FROM users WHERE Email = ?");
+    $check->bind_param("s", $email);
+    $check->execute();
+    $check->store_result();
+
+    if ($check->num_rows > 0) {
+        echo json_encode(["status" => "error", "message" => "Email already exists."]);
+        $check->close();
+        exit;
+    }
+    $check->close();
 
     
+    $sql = "INSERT INTO users (FirstName, LastName, Email, Password) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssss", $firstName, $lastName, $email, $hashedPassword);
+
+    if ($stmt->execute()) {
+        echo json_encode(["status" => "success", "message" => "Signup successful!"]);
+    } else {
+        echo json_encode(["status" => "error", "message" => "Database error: " . $stmt->error]);
+    }
+
+    $stmt->close();
+} else {
+    echo json_encode(["status" => "error", "errors" => $errors]);
+}
+
+$conn->close();
 ?>
