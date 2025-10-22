@@ -142,12 +142,11 @@ form1.addEventListener("submit", (e) => {
         alert("Sign up successful!");
         console.log("✅ Server response:", data);
         form1.reset();
-        // Hide all error messages on successful submission
+
         document.querySelectorAll(".error, .strength").forEach((el) => {
           el.style.display = "none";
         });
       } else {
-        // Handle server-side validation errors
         if (data.errors) {
           if (data.errors.email) {
             emailError.textContent = data.errors.email;
@@ -237,6 +236,25 @@ form2.addEventListener("submit", (e) => {
     keepSignedIn: keepSignIn.checked,
   };
 
-  console.log("✅ Login Data (JSON):", JSON.stringify(loginData, null, 2));
-  alert("Login successful!");
+  fetch("login.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Server Response:", data);
+
+      if (data.status === "success") {
+        alert("✅ Login successful!");
+      } else {
+        alert("❌ " + data.message);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("⚠️ Something went wrong. Please try again later.");
+    });
 });
