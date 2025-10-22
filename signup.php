@@ -13,8 +13,6 @@ $password = trim($input['password'] ?? '');
 
 $errors = [];
 
-
-
 if (empty($errors)) {
 
     // Hash the password securely
@@ -27,9 +25,11 @@ if (empty($errors)) {
     $check->store_result();
 
     if ($check->num_rows > 0) {
-        echo json_encode(["status" => "error", "message" => "Email already exists."]);
+        $errors['email'] = "Email already exists.";
         $check->close();
-        exit;
+        echo json_encode(["status" => "error", "errors" => $errors]);
+        $conn->close();
+        exit();
     }
     $check->close();
 

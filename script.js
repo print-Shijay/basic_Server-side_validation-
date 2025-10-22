@@ -142,8 +142,21 @@ form1.addEventListener("submit", (e) => {
         alert("Sign up successful!");
         console.log("✅ Server response:", data);
         form1.reset();
+        // Hide all error messages on successful submission
+        document.querySelectorAll(".error, .strength").forEach((el) => {
+          el.style.display = "none";
+        });
       } else {
-        alert("Sign up failed. Please try again.");
+        // Handle server-side validation errors
+        if (data.errors) {
+          if (data.errors.email) {
+            emailError.textContent = data.errors.email;
+            emailError.style.display = "block";
+          }
+        } else {
+          // Generic error if the 'errors' object is not available
+          alert("Sign up failed: " + (data.message || "Please try again."));
+        }
         console.log("❌ Server response:", data.errors);
       }
     })
