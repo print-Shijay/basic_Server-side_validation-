@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  color: #888686;
+}
+
+header {
+  background: #586fa7;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 4vh;
+  padding: 10px 0; /* Added some padding for vertical spacing */
+  color: #ffffff;
+}
+
+#left_nav {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around; /* This will space out the h1 and icons */
+  margin-left: 10px; /* Added some margin to move it from the edge */
+}
+
+#icons {
+  display: flex;
+  gap: 15px; /* Adds space between the icons */
+  font-size: 24px; /* Increased icon size */
+  color: #334e88;
+}
+
+#left_nav h1 {
+  font-size: 32px; /* Increased font size for "facebook" */
+  margin: 0; /* Removing default h1 margin */
+  padding: 0; /* Removing default h1 padding */
+}
+
+main {
+  display: flex;
+  background-color: #f0f2f5; /* A light grey background for the main area */
+  height: 93vh;
+}
+
+#left {
+  width: 20%;
+
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-left: 10px;
+  box-sizing: border-box; /* Ensures padding doesn't add to the width */
+  background-color: #ffffff;
+  border-right: 1px solid #dddfe2;
+}
+
+#right {
+  width: 80%;
+  position: relative;
+  top: calc(-4vh - 11px);
+  z-index: 10;
+  background-color: #f0f2f5;
+  border-top: 1px solid grey;
+  border-left: 1px solid grey;
+  height: 99vh;
+}
+
+#left img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover; /* Prevents the image from being distorted */
+  background-color: #fcfffe; /* Placeholder color */
+}
+
+#side_nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+.nav_items {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  padding: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+.nav_items.active {
+  background-color: #dfe5ec;
+}
+
+#left hr {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  margin: 15px 0;
+}
+
+#other_options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+/* Right side header (search bar) */
+#right #header {
+  height: 4vh;
+  background-color: #778fbd;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+#right #header input[type="text"] {
+  width: 30%;
+  height: 100%;
+  border: 1px solid #ccc;
+  border-right: none; /* Remove right border to merge with button */
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-radius: 4px 0 0 4px; /* Rounded corners on the left */
+}
+
+#right #header button {
+  height: 100%;
+  border: 1px solid #ccc;
+  border-left: none;
+  background-color: #f6f7f9;
+  cursor: pointer;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-radius: 0 4px 4px 0; /* Rounded corners on the right */
+}
+
+/* Information section */
+#information {
+  margin-top: 5%;
+  margin-left: 10%;
+  padding-right: 10px;
+}
+
+#information #name {
+  font-size: 3.5em; /* Larger font size */
+  font-weight: 700; /* Bolder text */
+  color: #1c1e21;
+}
+
+#information #contents {
+  font-size: 1.6em;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Education and Work section */
+#EducationAndWork {
+  margin-left: 10%;
+}
+
+#EducationAndWork h2 {
+  background-color: #f6f7f6;
+  padding: 12px;
+  font-size: 1.2em;
+  border-top: 1px solid #dddfe2;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 10vw;
+  padding: 15px 10px;
+  border-bottom: 1px solid grey;
+  min-height: 20vh;
+}
+
+.card .label {
+  color: grey;
+  width: 120px; /* Fixed width for alignment */
+  flex-shrink: 0;
+}
+
+.card .photo img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.card .info {
+  font-size: 1.1em;
+  color: #1c1e21;
+}

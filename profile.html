@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style1.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div id="left_nav">
+        <h1>facebook</h1>
+
+        <div id="icons">
+          <i class="fa-solid fa-user-group"></i>
+          <i class="fa-solid fa-comment"></i>
+          <i class="fa-solid fa-earth-americas"></i>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="left">
+        <img
+          src="https://i.pinimg.com/736x/15/12/3e/15123e5705f017bc3b74ede3680c608d.jpg"
+          alt=""
+        />
+
+        <div id="side_nav">
+          <a href="" class="nav_items">
+            <i class="fa-solid fa-square-rss"></i>
+            <span>Wall</span>
+          </a>
+          <a href="" class="nav_items active">
+            <i class="fa-solid fa-id-card"></i>
+            <span>Info</span>
+          </a>
+          <a href="" class="nav_items">
+            <i class="fa-solid fa-square-poll-horizontal"></i>
+            <span>Questions</span>
+          </a>
+        </div>
+        <hr />
+        <div id="other_options">
+          <a href="">Share Profile</a>
+          <a href="">Report/Block This Person</a>
+        </div>
+      </div>
+
+      <div id="right">
+        <div id="header">
+          <input type="text" placeholder="Search" />
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div id="information">
+          <h1 id="name">Loading...</h1>
+          <p id="contents">
+            🔒 Founder and CEO at Facebook 🎓 Studied Computer Science at
+            Harvard University 🏠 Lives in Palo Alto, California 🌐 Knows
+            English, Mandarin Chinese 🏠 From Dobbs Ferry, New York 📅 Born on
+            May 14, 1984
+          </p>
+        </div>
+
+        <div id="EducationAndWork">
+          <h2>Education and Work</h2>
+          <div class="card">
+            <div class="label">
+              <h3>Work</h3>
+            </div>
+            <div class="photo">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/1024px-Facebook_icon_2013.svg.png"
+                alt="Facebook Logo"
+              />
+            </div>
+            <div class="info">
+              <p>Founder and CEO at <b>Facebook</b></p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="label">
+              <h3>College</h3>
+            </div>
+            <div class="photo">
+              <img
+                src="https://lh3.googleusercontent.com/c0_sCdfVv3_rJUOqhwJva5shvDDiwock8K7be4u39RxthWlEdqV4FWmUatlYM33H0Yjsnp7MX2zc4SR8cSzPxBaxiR8pHPfXboFkX9KRf8XOFcQ8g2qBtUZrGe7Lj5UiM2IWQ8IVyniii0DkXWO95n0"
+              />
+            </div>
+            <div class="info">
+              <p>Studied Computer Science at <b>Harvard University</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script>
+    // Fetch user info from PHP
+    fetch("get_user.php")
+      .then((response) => response.json())
+      .then((data) => {
+        const nameElement = document.getElementById("name");
+
+        if (data.status === "success") {
+          nameElement.textContent = `${data.firstName} ${data.lastName}`;
+        } else {
+          nameElement.textContent = "Guest";
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching user:", error);
+        document.getElementById("name").textContent = "Guest";
+      });
+  </script>
+</html>

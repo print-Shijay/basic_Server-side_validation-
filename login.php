@@ -1,5 +1,6 @@
 <?php
 include("db.php");
+session_start();
 header("Content-Type: application/json");
 
 // Decode JSON input
@@ -25,7 +26,15 @@ if ($result->num_rows === 1) {
 
     // Verify hashed password
     if (password_verify($password, $user['Password'])) {
-        echo json_encode(["status" => "success", "message" => "Login successful."]);
+        $_SESSION['user_id'] = $user['Id'];
+        $_SESSION['firstName'] = $user['FirstName'];
+        $_SESSION['lastName'] = $user['LastName'];
+
+        echo json_encode([
+            "status" => "success",
+            "message" => "Login successful.",
+            "redirect" => "profile.html"
+        ]);
     } else {
         echo json_encode(["status" => "error", "message" => "Invalid password."]);
     }

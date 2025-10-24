@@ -248,7 +248,10 @@ form2.addEventListener("submit", (e) => {
       console.log("Server Response:", data);
 
       if (data.status === "success") {
-        alert("✅ Login successful!");
+        alert("✅ Login successful! Redirecting to your profile...");
+        if (data.redirect) {
+          window.location.href = data.redirect;
+        }
       } else {
         alert("❌ " + data.message);
       }
